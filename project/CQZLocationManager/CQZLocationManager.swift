@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-@objc protocol CQZLocationManagerDelegate:NSObjectProtocol {
+@objc public protocol CQZLocationManagerDelegate:NSObjectProtocol {
     optional func didUpdateLocation(location:CLLocation)
     optional func didChangeAuthorizationStatus(status:CLAuthorizationStatus)
 }
@@ -20,6 +20,7 @@ public class CQZLocationManager: NSObject {
     
     //MARK: - public properties
     public var currentLocation:CLLocation = CLLocation()
+    weak public var delegate:CQZLocationManagerDelegate?
     
     //MARK: - public methods
     public func requestAutorization (type type:CQZLocationManagerRequest){
@@ -40,9 +41,6 @@ public class CQZLocationManager: NSObject {
     public func stopUpdatingLocation(){
         locationManager.stopUpdatingLocation()
     }
-    
-    //MARK: - internal properties
-    weak private var delegate:CQZLocationManagerDelegate?
     
     //MARK: - private properties
     private let locationManager = CLLocationManager()
