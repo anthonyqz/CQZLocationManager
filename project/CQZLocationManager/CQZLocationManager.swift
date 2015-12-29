@@ -32,6 +32,14 @@ public class CQZLocationManager: NSObject {
         }
     }
     
+    public func startUpdatingLocation(){
+        locationManager.startUpdatingLocation()
+    }
+    
+    public func stopUpdatingLocation(){
+        locationManager.stopUpdatingLocation()
+    }
+    
     //MARK: - internal properties
     weak private var delegate:CQZLocationManagerDelegate?
     
