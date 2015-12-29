@@ -9,4 +9,5 @@ Pod::Spec.new do |s|
   	s.requires_arc 			= true
 	s.frameworks             	= "Foundation", "CoreLocation"
 	s.source_files			= 'project/CQZLocationManager/*.swift'
+	s.ios.vendored_frameworks	= 'project/CQZLocationManager.framework'
 end
