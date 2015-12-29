@@ -10,7 +10,8 @@ import UIKit
 import CoreLocation
 
 @objc protocol CQZLocationManagerDelegate:NSObjectProtocol {
-    optional func locationManagerDidUpdateLocation(location:CLLocation)
+    optional func didUpdateLocation(location:CLLocation)
+    optional func didChangeAuthorizationStatus(status:CLAuthorizationStatus)
 }
 
 public class CQZLocationManager: NSObject {
@@ -61,7 +62,12 @@ extension CQZLocationManager:CLLocationManagerDelegate {
     public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             currentLocation = location
-            delegate?.locationManagerDidUpdateLocation?(location)
+            delegate?.didUpdateLocation?(location)
         }
+    }
+    
+    public func locationManager(manager: CLLocationManager,
+        didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+            delegate?.didChangeAuthorizationStatus?(status)
     }
 }
