@@ -42,6 +42,10 @@ public class CQZLocationManager: NSObject {
         locationManager.stopUpdatingLocation()
     }
     
+    public func allowsBackground(allow:Bool) {
+        locationManager.allowsBackgroundLocationUpdates = allow
+    }
+    
     //MARK: - private properties
     private let locationManager = CLLocationManager()
     
@@ -49,8 +53,16 @@ public class CQZLocationManager: NSObject {
     @objc private override init(){
         super.init()
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 15
+        // Set an accuracy level. The higher, the better for energy.
+        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+        // Enable automatic pausing
+        locationManager.pausesLocationUpdatesAutomatically = true
+        // Specify the type of activity your app is currently performing
+        locationManager.activityType = CLActivityType.OtherNavigation
+        // Enable background location updates
+        locationManager.allowsBackgroundLocationUpdates = true
+        // Start location updates
+        locationManager.startUpdatingLocation()
     }
     
 }
@@ -58,10 +70,12 @@ public class CQZLocationManager: NSObject {
 //MARK: - CLLocationManagerDelegate
 extension CQZLocationManager:CLLocationManagerDelegate {
     public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         if let location = locations.last {
             currentLocation = location
             delegate?.didUpdateLocation?(location)
         }
+        
     }
     
     public func locationManager(manager: CLLocationManager,
