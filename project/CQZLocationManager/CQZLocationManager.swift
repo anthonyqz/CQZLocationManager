@@ -42,13 +42,13 @@ public class CQZLocationManager: NSObject {
         locationManager.stopUpdatingLocation()
     }
     
-//    public func allowsBackground(allow:Bool) {
-//        if #available(iOS 9.0, *) {
-//            locationManager.allowsBackgroundLocationUpdates = allow
-//        } else {
-//            // Fallback on earlier versions
-//        }
-//    }
+    public func allowsBackground(allow:Bool) {
+        if #available(iOS 9.0, *) {
+            locationManager.allowsBackgroundLocationUpdates = allow
+        } else {
+            // Fallback on earlier versions
+        }
+    }
     
     //MARK: - private properties
     private let locationManager = CLLocationManager()
@@ -66,11 +66,11 @@ public class CQZLocationManager: NSObject {
 //        locationManager.activityType = CLActivityType.OtherNavigation
         locationManager.activityType = CLActivityType.AutomotiveNavigation
         // Enable background location updates
-//        if #available(iOS 9.0, *) {
-//            locationManager.allowsBackgroundLocationUpdates = true
-//        } else {
-//            // Fallback on earlier versions
-//        }
+        if #available(iOS 9.0, *) {
+            locationManager.allowsBackgroundLocationUpdates = true
+        } else {
+            // Fallback on earlier versions
+        }
         // Start location updates
         locationManager.startUpdatingLocation()
     }
