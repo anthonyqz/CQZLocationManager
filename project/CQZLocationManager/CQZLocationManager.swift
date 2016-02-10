@@ -23,15 +23,12 @@ public class CQZLocationManager: NSObject {
     weak public var delegate:CQZLocationManagerDelegate?
     
     //MARK: - public methods
-    public func requestAutorization (type type:CQZLocationManagerRequest){
-        switch type {
-        case CQZLocationManagerRequest.AlwaysAuthorization:
-            locationManager.requestAlwaysAuthorization()
-            break
-        case CQZLocationManagerRequest.WhenInUseAutorization:
-            locationManager.requestWhenInUseAuthorization()
-            break
-        }
+    public func requestAlwaysAutorization (){
+        locationManager.requestAlwaysAuthorization()
+    }
+    
+    public func requestWhenInUseAutorization (){
+        locationManager.requestWhenInUseAuthorization()
     }
     
     public func startUpdatingLocation(){
@@ -50,28 +47,46 @@ public class CQZLocationManager: NSObject {
         }
     }
     
+    public func setBlockToDidUpdateLocation(block:() -> ()) {
+        blockInDidUpdateLocations = block
+    }
+    
     //MARK: - private properties
     private let locationManager = CLLocationManager()
     
+    private var blockInDidUpdateLocations:(() -> ())?
+    
     //MARK: - override methods
+    public func configuration(withDesiredAccuracy desiredAccuracy:CLLocationAccuracy?, activityType:CLActivityType?, locationUpdates:Bool? ){
+        // Set an accuracy level. The higher, the better for energy.
+        if let desiredAccuracy = desiredAccuracy {
+            locationManager.desiredAccuracy = desiredAccuracy
+        }
+        // Specify the type of activity your app is currently performing
+        if let activityType = activityType {
+            locationManager.activityType = activityType
+        }
+        if #available(iOS 9.0, *) {
+            // Enable automatic pausing
+            if let locationUpdates = locationUpdates {
+                locationManager.allowsBackgroundLocationUpdates = locationUpdates
+            }
+        }
+        locationManager.startUpdatingLocation()
+        
+    }
+    
     @objc private override init(){
         super.init()
         locationManager.delegate = self
         // Set an accuracy level. The higher, the better for energy.
-//        locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        // Enable automatic pausing
-//        locationManager.pausesLocationUpdatesAutomatically = true
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         // Specify the type of activity your app is currently performing
-//        locationManager.activityType = CLActivityType.OtherNavigation
         locationManager.activityType = CLActivityType.AutomotiveNavigation
-        // Enable background location updates
         if #available(iOS 9.0, *) {
+            // Enable automatic pausing
             locationManager.allowsBackgroundLocationUpdates = true
-        } else {
-            // Fallback on earlier versions
         }
-        // Start location updates
         locationManager.startUpdatingLocation()
     }
     
@@ -83,6 +98,9 @@ extension CQZLocationManager:CLLocationManagerDelegate {
         
         if let location = locations.last {
             currentLocation = location
+            if let blockInDidUpdateLocations = blockInDidUpdateLocations{
+                blockInDidUpdateLocations()
+            }
             delegate?.didUpdateLocation?(location)
         }
         
