@@ -47,14 +47,14 @@ public class CQZLocationManager: NSObject {
         }
     }
     
-    public func setBlockToDidUpdateLocation(block:() -> ()) {
+    public func setBlockToDidUpdateLocation(block:((location:CLLocation) -> ())?) {
         blockInDidUpdateLocations = block
     }
     
     //MARK: - private properties
     private let locationManager = CLLocationManager()
     
-    private var blockInDidUpdateLocations:(() -> ())?
+    private var blockInDidUpdateLocations:((location:CLLocation) -> ())?
     
     //MARK: - override methods
     public func configuration(withDesiredAccuracy desiredAccuracy:CLLocationAccuracy?, activityType:CLActivityType?, locationUpdates:Bool? ){
@@ -99,7 +99,7 @@ extension CQZLocationManager:CLLocationManagerDelegate {
         if let location = locations.last {
             currentLocation = location
             if let blockInDidUpdateLocations = blockInDidUpdateLocations{
-                blockInDidUpdateLocations()
+                blockInDidUpdateLocations(location:location)
             }
             delegate?.didUpdateLocation?(location)
         }
