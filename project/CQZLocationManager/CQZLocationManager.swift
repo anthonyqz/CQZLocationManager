@@ -80,9 +80,9 @@ public class CQZLocationManager: NSObject {
         super.init()
         locationManager.delegate = self
         // Set an accuracy level. The higher, the better for energy.
-        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         // Specify the type of activity your app is currently performing
-        locationManager.activityType = CLActivityType.AutomotiveNavigation
+        locationManager.activityType = CLActivityType.Fitness
         if #available(iOS 9.0, *) {
             // Enable automatic pausing
             locationManager.allowsBackgroundLocationUpdates = true
