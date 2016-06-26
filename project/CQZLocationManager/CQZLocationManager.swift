@@ -16,7 +16,7 @@ import CoreLocation
 
 public class CQZLocationManager: NSObject {
     //MARK: - Singleton
-    public static let sharedLocationManager = CQZLocationManager()
+    public static let shared = CQZLocationManager()
     
     //MARK: - public properties
     public var currentLocation:CLLocation = CLLocation()
@@ -83,10 +83,6 @@ public class CQZLocationManager: NSObject {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         // Specify the type of activity your app is currently performing
         locationManager.activityType = CLActivityType.Fitness
-        if #available(iOS 9.0, *) {
-            // Enable automatic pausing
-            locationManager.allowsBackgroundLocationUpdates = true
-        }
         locationManager.startUpdatingLocation()
     }
     
