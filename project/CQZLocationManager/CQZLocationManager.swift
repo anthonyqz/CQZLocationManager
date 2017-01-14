@@ -9,37 +9,37 @@
 import UIKit
 import CoreLocation
 
-@objc public protocol CQZLocationManagerDelegate:NSObjectProtocol {
-    optional func didUpdateLocation(location:CLLocation)
-    optional func didChangeAuthorizationStatus(status:CLAuthorizationStatus)
+@objc public protocol CQZLocationManagerDelegate {
+    @objc optional func didUpdateLocation(_ location:CLLocation)
+    @objc optional func didChangeAuthorizationStatus(_ status:CLAuthorizationStatus)
 }
 
-public class CQZLocationManager: NSObject {
+open class CQZLocationManager: NSObject {
     //MARK: - Singleton
-    public static let shared = CQZLocationManager()
+    open static let shared = CQZLocationManager()
     
     //MARK: - public properties
-    public var currentLocation:CLLocation = CLLocation()
-    weak public var delegate:CQZLocationManagerDelegate?
+    open var currentLocation:CLLocation = CLLocation()
+    open weak var delegate:CQZLocationManagerDelegate?
     
     //MARK: - public methods
-    public func requestAlwaysAutorization (){
+    open func requestAlwaysAutorization (){
         locationManager.requestAlwaysAuthorization()
     }
     
-    public func requestWhenInUseAutorization (){
+    open func requestWhenInUseAutorization (){
         locationManager.requestWhenInUseAuthorization()
     }
     
-    public func startUpdatingLocation(){
+    open func startUpdatingLocation(){
         locationManager.startUpdatingLocation()
     }
     
-    public func stopUpdatingLocation(){
+    open func stopUpdatingLocation(){
         locationManager.stopUpdatingLocation()
     }
     
-    public func allowsBackground(allow:Bool) {
+    open func allowsBackground(_ allow:Bool) {
         if #available(iOS 9.0, *) {
             locationManager.allowsBackgroundLocationUpdates = allow
         } else {
@@ -47,17 +47,20 @@ public class CQZLocationManager: NSObject {
         }
     }
     
-    public func setBlockToDidUpdateLocation(block:((location:CLLocation) -> ())?) {
+    open func setBlockToDidUpdateLocation(_ block:((_ location:CLLocation) -> ())?) {
         blockInDidUpdateLocations = block
     }
     
     //MARK: - private properties
-    private let locationManager = CLLocationManager()
+    fileprivate let locationManager = CLLocationManager()
     
-    private var blockInDidUpdateLocations:((location:CLLocation) -> ())?
+    fileprivate var blockInDidUpdateLocations:((_ location:CLLocation) -> ())?
     
     //MARK: - override methods
-    public func configuration(withDesiredAccuracy desiredAccuracy:CLLocationAccuracy?, activityType:CLActivityType?, locationUpdates:Bool? ){
+    open func configuration(withDesiredAccuracy desiredAccuracy:CLLocationAccuracy?
+        , activityType:CLActivityType?
+        //, locationUpdates:Bool?
+        ){
         // Set an accuracy level. The higher, the better for energy.
         if let desiredAccuracy = desiredAccuracy {
             locationManager.desiredAccuracy = desiredAccuracy
@@ -66,23 +69,23 @@ public class CQZLocationManager: NSObject {
         if let activityType = activityType {
             locationManager.activityType = activityType
         }
-        if #available(iOS 9.0, *) {
-            // Enable automatic pausing
-            if let locationUpdates = locationUpdates {
-                locationManager.allowsBackgroundLocationUpdates = locationUpdates
-            }
-        }
+//        if #available(iOS 9.0, *) {
+//            // Enable automatic pausing
+//            if let locationUpdates = locationUpdates {
+//                locationManager.allowsBackgroundLocationUpdates = locationUpdates
+//            }
+//        }
         locationManager.startUpdatingLocation()
         
     }
     
-    @objc private override init(){
+    @objc fileprivate override init(){
         super.init()
         locationManager.delegate = self
         // Set an accuracy level. The higher, the better for energy.
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         // Specify the type of activity your app is currently performing
-        locationManager.activityType = CLActivityType.Fitness
+        locationManager.activityType = CLActivityType.fitness
         locationManager.startUpdatingLocation()
     }
     
@@ -90,20 +93,20 @@ public class CQZLocationManager: NSObject {
 
 //MARK: - CLLocationManagerDelegate
 extension CQZLocationManager:CLLocationManagerDelegate {
-    public func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         if let location = locations.last {
             currentLocation = location
             if let blockInDidUpdateLocations = blockInDidUpdateLocations{
-                blockInDidUpdateLocations(location:location)
+                blockInDidUpdateLocations(location)
             }
             delegate?.didUpdateLocation?(location)
         }
         
     }
     
-    public func locationManager(manager: CLLocationManager,
-        didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    public func locationManager(_ manager: CLLocationManager,
+        didChangeAuthorization status: CLAuthorizationStatus) {
             delegate?.didChangeAuthorizationStatus?(status)
     }
 }

@@ -10,7 +10,39 @@
 		47494ADD1C3214E8004001A6 /* CQZLocationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 47494ADC1C3214E8004001A6 /* CQZLocationManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		47494AE51C321593004001A6 /* CQZLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47494AE41C321593004001A6 /* CQZLocationManager.swift */; };
 		47494AE71C3216E3004001A6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47494AE61C3216E3004001A6 /* CoreLocation.framework */; };
+		EFEE1AB91E2A9B2000111CB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEE1AB81E2A9B2000111CB9 /* AppDelegate.swift */; };
+		EFEE1ABB1E2A9B2000111CB9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEE1ABA1E2A9B2000111CB9 /* ViewController.swift */; };
+		EFEE1ABE1E2A9B2000111CB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFEE1ABC1E2A9B2000111CB9 /* Main.storyboard */; };
+		EFEE1AC01E2A9B2000111CB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFEE1ABF1E2A9B2000111CB9 /* Assets.xcassets */; };
+		EFEE1AC31E2A9B2000111CB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFEE1AC11E2A9B2000111CB9 /* LaunchScreen.storyboard */; };
+		EFEE1AC91E2AA52F00111CB9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47494AE61C3216E3004001A6 /* CoreLocation.framework */; };
+		EFEE1ACA1E2ABC3400111CB9 /* CQZLocationManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47494AD91C3214E8004001A6 /* CQZLocationManager.framework */; };
+		EFEE1ACB1E2ABC3400111CB9 /* CQZLocationManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 47494AD91C3214E8004001A6 /* CQZLocationManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EFEE1ACC1E2ABC3400111CB9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 47494AD01C3214E8004001A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 47494AD81C3214E8004001A6;
+			remoteInfo = CQZLocationManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EFEE1ACE1E2ABC3400111CB9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EFEE1ACB1E2ABC3400111CB9 /* CQZLocationManager.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		47494AD91C3214E8004001A6 /* CQZLocationManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CQZLocationManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -18,6 +50,13 @@
 		47494ADE1C3214E8004001A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47494AE41C321593004001A6 /* CQZLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CQZLocationManager.swift; sourceTree = "<group>"; };
 		47494AE61C3216E3004001A6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		EFEE1AB61E2A9B1F00111CB9 /* CQZLocationManagerAppTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CQZLocationManagerAppTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFEE1AB81E2A9B2000111CB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EFEE1ABA1E2A9B2000111CB9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EFEE1ABD1E2A9B2000111CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EFEE1ABF1E2A9B2000111CB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EFEE1AC21E2A9B2000111CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EFEE1AC41E2A9B2000111CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +68,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EFEE1AB31E2A9B1F00111CB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFEE1ACA1E2ABC3400111CB9 /* CQZLocationManager.framework in Frameworks */,
+				EFEE1AC91E2AA52F00111CB9 /* CoreLocation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -37,6 +85,7 @@
 			children = (
 				47494AE61C3216E3004001A6 /* CoreLocation.framework */,
 				47494ADB1C3214E8004001A6 /* CQZLocationManager */,
+				EFEE1AB71E2A9B2000111CB9 /* CQZLocationManagerAppTest */,
 				47494ADA1C3214E8004001A6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				47494AD91C3214E8004001A6 /* CQZLocationManager.framework */,
+				EFEE1AB61E2A9B1F00111CB9 /* CQZLocationManagerAppTest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,6 +107,19 @@
 				47494ADE1C3214E8004001A6 /* Info.plist */,
 			);
 			path = CQZLocationManager;
+			sourceTree = "<group>";
+		};
+		EFEE1AB71E2A9B2000111CB9 /* CQZLocationManagerAppTest */ = {
+			isa = PBXGroup;
+			children = (
+				EFEE1AB81E2A9B2000111CB9 /* AppDelegate.swift */,
+				EFEE1ABA1E2A9B2000111CB9 /* ViewController.swift */,
+				EFEE1ABC1E2A9B2000111CB9 /* Main.storyboard */,
+				EFEE1ABF1E2A9B2000111CB9 /* Assets.xcassets */,
+				EFEE1AC11E2A9B2000111CB9 /* LaunchScreen.storyboard */,
+				EFEE1AC41E2A9B2000111CB9 /* Info.plist */,
+			);
+			path = CQZLocationManagerAppTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,17 +154,44 @@
 			productReference = 47494AD91C3214E8004001A6 /* CQZLocationManager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		EFEE1AB51E2A9B1F00111CB9 /* CQZLocationManagerAppTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFEE1AC51E2A9B2000111CB9 /* Build configuration list for PBXNativeTarget "CQZLocationManagerAppTest" */;
+			buildPhases = (
+				EFEE1AB21E2A9B1F00111CB9 /* Sources */,
+				EFEE1AB31E2A9B1F00111CB9 /* Frameworks */,
+				EFEE1AB41E2A9B1F00111CB9 /* Resources */,
+				EFEE1ACE1E2ABC3400111CB9 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EFEE1ACD1E2ABC3400111CB9 /* PBXTargetDependency */,
+			);
+			name = CQZLocationManagerAppTest;
+			productName = CQZLocationManagerAppTest;
+			productReference = EFEE1AB61E2A9B1F00111CB9 /* CQZLocationManagerAppTest.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		47494AD01C3214E8004001A6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = ecorenetworks;
 				TargetAttributes = {
 					47494AD81C3214E8004001A6 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = F6SCET52Q6;
+						LastSwiftMigration = 0820;
+					};
+					EFEE1AB51E2A9B1F00111CB9 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = F6SCET52Q6;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -111,6 +201,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 47494ACF1C3214E8004001A6;
 			productRefGroup = 47494ADA1C3214E8004001A6 /* Products */;
@@ -118,6 +209,7 @@
 			projectRoot = "";
 			targets = (
 				47494AD81C3214E8004001A6 /* CQZLocationManager */,
+				EFEE1AB51E2A9B1F00111CB9 /* CQZLocationManagerAppTest */,
 			);
 		};
 /* End PBXProject section */
@@ -127,6 +219,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFEE1AB41E2A9B1F00111CB9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFEE1AC31E2A9B2000111CB9 /* LaunchScreen.storyboard in Resources */,
+				EFEE1AC01E2A9B2000111CB9 /* Assets.xcassets in Resources */,
+				EFEE1ABE1E2A9B2000111CB9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,7 +243,43 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EFEE1AB21E2A9B1F00111CB9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFEE1ABB1E2A9B2000111CB9 /* ViewController.swift in Sources */,
+				EFEE1AB91E2A9B2000111CB9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EFEE1ACD1E2ABC3400111CB9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 47494AD81C3214E8004001A6 /* CQZLocationManager */;
+			targetProxy = EFEE1ACC1E2ABC3400111CB9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EFEE1ABC1E2A9B2000111CB9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFEE1ABD1E2A9B2000111CB9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EFEE1AC11E2A9B2000111CB9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFEE1AC21E2A9B2000111CB9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		47494ADF1C3214E8004001A6 /* Debug */ = {
@@ -169,6 +307,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -186,7 +325,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -217,6 +356,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -227,7 +367,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -240,6 +380,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = F6SCET52Q6;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -251,7 +392,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -260,6 +401,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = F6SCET52Q6;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -270,7 +412,49 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ecorenetworks.CQZLocationManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		EFEE1AC61E2A9B2000111CB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEVELOPMENT_TEAM = F6SCET52Q6;
+				INFOPLIST_FILE = CQZLocationManagerAppTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ca9z.cqzLocationManagerAppTest.CQZLocationManagerAppTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		EFEE1AC71E2A9B2000111CB9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEVELOPMENT_TEAM = F6SCET52Q6;
+				INFOPLIST_FILE = CQZLocationManagerAppTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ca9z.cqzLocationManagerAppTest.CQZLocationManagerAppTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -294,6 +478,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		EFEE1AC51E2A9B2000111CB9 /* Build configuration list for PBXNativeTarget "CQZLocationManagerAppTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFEE1AC61E2A9B2000111CB9 /* Debug */,
+				EFEE1AC71E2A9B2000111CB9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
