@@ -39,14 +39,6 @@ open class CQZLocationManager: NSObject {
         locationManager.stopUpdatingLocation()
     }
     
-    open func allowsBackground(_ allow:Bool) {
-        if #available(iOS 9.0, *) {
-            locationManager.allowsBackgroundLocationUpdates = allow
-        } else {
-            // Fallback on earlier versions
-        }
-    }
-    
     open func setBlockToDidUpdateLocation(_ block:((_ location:CLLocation) -> ())?) {
         blockInDidUpdateLocations = block
     }
@@ -69,12 +61,6 @@ open class CQZLocationManager: NSObject {
         if let activityType = activityType {
             locationManager.activityType = activityType
         }
-//        if #available(iOS 9.0, *) {
-//            // Enable automatic pausing
-//            if let locationUpdates = locationUpdates {
-//                locationManager.allowsBackgroundLocationUpdates = locationUpdates
-//            }
-//        }
         locationManager.startUpdatingLocation()
         
     }
@@ -93,6 +79,7 @@ open class CQZLocationManager: NSObject {
 
 //MARK: - CLLocationManagerDelegate
 extension CQZLocationManager:CLLocationManagerDelegate {
+    
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         if let location = locations.last {

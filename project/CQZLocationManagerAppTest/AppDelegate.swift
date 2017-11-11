@@ -21,7 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         CQZLocationManager.shared.configuration(withDesiredAccuracy: kCLLocationAccuracyBest
             , activityType: .fitness)
-        CQZLocationManager.shared.requestWhenInUseAutorization()
+        CQZLocationManager.shared.requestAlwaysAutorization()
+        CQZLocationManager.shared.setBlockToDidUpdateLocation { (location) in
+            print(location)
+        }
         
         return true
     }
