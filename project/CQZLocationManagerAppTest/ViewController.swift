@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     @IBOutlet private var latitudLabel:UILabel!
     @IBOutlet private var longitudLabel:UILabel!
+    @IBOutlet private weak var countryLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,5 +30,12 @@ class ViewController: UIViewController {
         latitudLabel.text = "\(CQZLocationManager.shared.currentLocation.coordinate.latitude)"
         longitudLabel.text = "\(CQZLocationManager.shared.currentLocation.coordinate.longitude)"
     }
+    
+    @IBAction func getPlaceMark(_ sender: Any) {
+        CQZLocationManager.shared.lookUpCurrentLocation { (placemark) in
+            self.countryLabel.text = placemark?.country
+        }
+    }
+    
 }
 

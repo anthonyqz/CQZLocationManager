@@ -43,6 +43,32 @@ open class CQZLocationManager: NSObject {
         blockInDidUpdateLocations = block
     }
     
+    //return the placemark
+    open func lookUpCurrentLocation(completionHandler: @escaping (CLPlacemark?)
+        -> Void ) {
+        // Use the last reported location.
+        if let lastLocation = locationManager.location {
+            let geocoder = CLGeocoder()
+            
+            // Look up the location and pass it to the completion handler
+            geocoder.reverseGeocodeLocation(lastLocation,
+                                            completionHandler: { (placemarks, error) in
+                                                if error == nil {
+                                                    let firstLocation = placemarks?[0]
+                                                    completionHandler(firstLocation)
+                                                }
+                                                else {
+                                                    // An error occurred during geocoding.
+                                                    completionHandler(nil)
+                                                }
+            })
+        }
+        else {
+            // No location was available.
+            completionHandler(nil)
+        }
+    }
+    
     //MARK: - private properties
     fileprivate let locationManager = CLLocationManager()
     
@@ -88,6 +114,8 @@ extension CQZLocationManager:CLLocationManagerDelegate {
                 blockInDidUpdateLocations(location)
             }
             delegate?.didUpdateLocation?(location)
+            
+            //get the placemark
         }
         
     }
@@ -96,4 +124,5 @@ extension CQZLocationManager:CLLocationManagerDelegate {
         didChangeAuthorization status: CLAuthorizationStatus) {
             delegate?.didChangeAuthorizationStatus?(status)
     }
+    
 }
