@@ -14,37 +14,37 @@ import CoreLocation
     @objc optional func didChangeAuthorizationStatus(_ status:CLAuthorizationStatus)
 }
 
-open class CQZLocationManager: NSObject {
+public class CQZLocationManager: NSObject {
     //MARK: - Singleton
-    open static let shared = CQZLocationManager()
+    public static let shared = CQZLocationManager()
     
     //MARK: - public properties
-    open var currentLocation:CLLocation = CLLocation()
-    open weak var delegate:CQZLocationManagerDelegate?
+    public var currentLocation:CLLocation = CLLocation()
+    public weak var delegate:CQZLocationManagerDelegate?
     
     //MARK: - public methods
-    open func requestAlwaysAutorization (){
+    public func requestAlwaysAutorization (){
         locationManager.requestAlwaysAuthorization()
     }
     
-    open func requestWhenInUseAutorization (){
+    public func requestWhenInUseAutorization (){
         locationManager.requestWhenInUseAuthorization()
     }
     
-    open func startUpdatingLocation(){
+    public func startUpdatingLocation(){
         locationManager.startUpdatingLocation()
     }
     
-    open func stopUpdatingLocation(){
+    public func stopUpdatingLocation(){
         locationManager.stopUpdatingLocation()
     }
     
-    open func setBlockToDidUpdateLocation(_ block:((_ location:CLLocation) -> ())?) {
+    public func setBlockToDidUpdateLocation(_ block:((_ location:CLLocation) -> ())?) {
         blockInDidUpdateLocations = block
     }
     
     //return the placemark
-    open func lookUpCurrentLocation(completionHandler: @escaping (CLPlacemark?)
+    public func lookUpCurrentLocation(completionHandler: @escaping (CLPlacemark?)
         -> Void ) {
         // Use the last reported location.
         if let lastLocation = locationManager.location {
@@ -75,7 +75,7 @@ open class CQZLocationManager: NSObject {
     fileprivate var blockInDidUpdateLocations:((_ location:CLLocation) -> ())?
     
     //MARK: - override methods
-    open func configuration(withDesiredAccuracy desiredAccuracy:CLLocationAccuracy?
+    public func configuration(withDesiredAccuracy desiredAccuracy:CLLocationAccuracy?
         , activityType:CLActivityType?
         //, locationUpdates:Bool?
         ){
