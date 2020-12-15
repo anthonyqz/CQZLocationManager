@@ -88,7 +88,9 @@ public class CQZLocationManager: NSObject {
             locationManager.activityType = activityType
         }
         locationManager.startUpdatingLocation()
-        
+        if #available(iOS 14.0, *) {
+            delegate?.didChangeAuthorizationStatus?(locationManager.authorizationStatus)
+        }
     }
     
     @objc fileprivate override init(){
