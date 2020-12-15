@@ -90,6 +90,8 @@ public class CQZLocationManager: NSObject {
         locationManager.startUpdatingLocation()
         if #available(iOS 14.0, *) {
             delegate?.didChangeAuthorizationStatus?(locationManager.authorizationStatus)
+        } else {
+            delegate?.didChangeAuthorizationStatus?(CLLocationManager.authorizationStatus())
         }
     }
     
