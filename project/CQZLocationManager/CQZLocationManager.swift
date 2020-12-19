@@ -69,6 +69,14 @@ public class CQZLocationManager: NSObject {
             completionHandler(nil)
         }
     }
+
+    public func getStatus() -> CLAuthorizationStatus {
+        if #available(iOS 14.0, *) {
+            return locationManager.authorizationStatus
+        } else {
+            return CLLocationManager.authorizationStatus()
+        }
+    }
     
     //MARK: - private properties
     fileprivate let locationManager = CLLocationManager()
