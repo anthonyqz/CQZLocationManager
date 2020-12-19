@@ -20,10 +20,11 @@ public class CQZLocationManager: NSObject {
     
     //MARK: - public properties
     public var currentLocation:CLLocation = CLLocation()
-    public weak var delegate:CQZLocationManagerDelegate?
+    public weak var delegate: CQZLocationManagerDelegate?
     
     //MARK: - public methods
-    public func requestAlwaysAutorization (){
+    public func requestAlwaysAutorization (completedRequest: ((_ status: CLAuthorizationStatus) -> ())?) {
+        self.completedRequest = completedRequest
         locationManager.requestAlwaysAuthorization()
     }
     
@@ -73,6 +74,7 @@ public class CQZLocationManager: NSObject {
     fileprivate let locationManager = CLLocationManager()
     
     fileprivate var blockInDidUpdateLocations:((_ location:CLLocation) -> ())?
+    private var completedRequest:((_ status: CLAuthorizationStatus) -> ())?
     
     //MARK: - override methods
     public func configuration(withDesiredAccuracy desiredAccuracy:CLLocationAccuracy?
@@ -88,11 +90,6 @@ public class CQZLocationManager: NSObject {
             locationManager.activityType = activityType
         }
         locationManager.startUpdatingLocation()
-        if #available(iOS 14.0, *) {
-            delegate?.didChangeAuthorizationStatus?(locationManager.authorizationStatus)
-        } else {
-            delegate?.didChangeAuthorizationStatus?(CLLocationManager.authorizationStatus())
-        }
     }
     
     @objc fileprivate override init(){
@@ -125,8 +122,9 @@ extension CQZLocationManager:CLLocationManagerDelegate {
     }
     
     public func locationManager(_ manager: CLLocationManager,
-        didChangeAuthorization status: CLAuthorizationStatus) {
-            delegate?.didChangeAuthorizationStatus?(status)
+                                didChangeAuthorization status: CLAuthorizationStatus) {
+        completedRequest?(status)
+        delegate?.didChangeAuthorizationStatus?(status)
     }
     
 }

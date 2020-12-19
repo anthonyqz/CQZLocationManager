@@ -18,10 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        CQZLocationManager.shared.requestAlwaysAutorization { status in
+            if status == .authorizedWhenInUse || status == .authorizedAlways {
+                CQZLocationManager.shared.configuration(withDesiredAccuracy: kCLLocationAccuracyBest
+                    , activityType: .fitness)
+            }
+        }
         
-        CQZLocationManager.shared.configuration(withDesiredAccuracy: kCLLocationAccuracyBest
-            , activityType: .fitness)
-        CQZLocationManager.shared.requestAlwaysAutorization()
         CQZLocationManager.shared.setBlockToDidUpdateLocation { (location) in
             print(location)
         }
